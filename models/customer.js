@@ -38,8 +38,8 @@ const addCustomer = async ()=>{
   });
   let order1 = await Order.findOne({ item : "chips"});
     let order2 = await Order.findOne({item : "cock"});
-    cust1.Orders.push(order1);
-    cust2.Orders.push(order2);
+    cust1.orders.push(order1);
+    cust2.orders.push(order2);
     
   let result = await cust1.save();
   console.log(result)
