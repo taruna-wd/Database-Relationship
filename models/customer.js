@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
-main().then(()=>{
+main()
+.then(()=>{
   console.log("connection sucessfully")
 }).catch(err => console.log(err));
 
@@ -37,9 +38,9 @@ const addCustomer = async ()=>{
     name : "yash"
   });
   let order1 = await Order.findOne({ item : "chips"});
-    let order2 = await Order.findOne({item : "cock"});
+    // let order2 = await Order.findOne({item : "cock"});
     cust1.orders.push(order1);
-    cust2.orders.push(order2);
+    // cust2.orders.push(order2);
     
   let result = await cust1.save();
   console.log(result)
@@ -55,4 +56,9 @@ addCustomer();
 // }
 
 // addOrders();
+
+const findCustomer = async ()=>{
+  let res = await  Customer.find({}).populate("orders");
+  console.log(res[0]);
+};
 
